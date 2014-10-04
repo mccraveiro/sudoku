@@ -41,6 +41,7 @@
     $scope.onCellOver = onCellOver.bind(null, $scope);
 
     newGame($scope);
+    _analytics.tracker.sendAppView('MainView');
   }
 
   function inputChange ($scope, cell) {
