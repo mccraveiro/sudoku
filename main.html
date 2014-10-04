@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sudoku</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/angular.min.css">
+  </head>
+  <body ng-csp ng-cloak ng-controller="MainController">
+    <aside>
+      <select ng-model="selectedDifficulty" ng-options="d.name for d in difficulties"></select>
+      <button ng-click="newGame()">New Game</button><br/>
+      <button ng-click="solve()">Solve</button>
+    </aside>
+    <div class="table">
+      <div class="table-row" ng-repeat="row in game.board">
+        <div class="table-cell" ng-repeat="cell in row track by $index" ng-mouseover="setCurrentColumn($index)" ng-mouseleave="setCurrentColumn(null)" ng-class="{highlight: currentColumn == $index}">
+          <span class="hint" ng-if="cell.hint">{{cell.value}}</span>
+          <input type="text" ng-if="!cell.hint" ng-model="cell.value" ng-change="inputChange(cell)" maxlength="1">
+        </div>
+      </div>
+    </div>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/sudoku.js"></script>
+    <script src="scripts/google-analytics-bundle.js"></script>
+    <script src="scripts/analytics.js"></script>
+    <script src="scripts/matrix.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

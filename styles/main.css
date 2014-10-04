@@ -1,0 +1,118 @@
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(../fonts/sourcepro400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Source Sans Pro Black'), local('SourceSansPro-Black'), url(../fonts/sourcepro900.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+aside {
+  height: 597px;
+  width: 250px;
+  float: left;
+  background-color: #436EEE;
+  line-height: 40px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.table {
+  height: 597px;
+  width: 597px;
+  float: left;
+}
+
+.table-row {
+  height: 65px;
+  border: 0px solid #000;
+}
+
+.table-cell {
+  height: 65px;
+  width: 65px;
+  float: left;
+  box-shadow: 1px 1px #dedede;
+  text-align: center;
+  line-height: 65px;
+  font-size: 16px;
+}
+
+.table-cell:first-child {
+  border-left: 3px solid;
+}
+
+.table-cell:nth-child(3n) {
+  border-right: 3px solid;
+}
+
+.table-row:first-child {
+  border-top: 3px solid;
+}
+
+.table-row:nth-child(3n) .table-cell {
+  border-bottom: 3px solid;
+}
+
+.table-cell:last-child {
+  box-shadow: 0px 1px #dedede;
+}
+
+.table-row:last-child .table-cell {
+  box-shadow: 1px 0px #dedede;
+}
+
+.table-row:last-child .table-cell:last-child {
+  box-shadow: 0px 0px;
+}
+
+.table-cell input {
+  height: 64px;
+  width: 64px;
+  box-sizing: border-box;
+  outline: 0;
+  border: 0;
+  margin: 1px 0 0 1px;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.table-cell input:focus {
+  background-color: yellow;
+}
+
+.table-row .table-cell.highlight:not(:hover),
+.table-row .table-cell.highlight:not(:hover) input:not(:focus),
+.table-row:hover .table-cell:not(:hover),
+.table-row:hover .table-cell:not(:hover) input:not(:focus) {
+  background-color: #E8E8E8;
+}
+
+.table-cell:hover,
+.table-cell:hover input:not(:focus) {
+  background-color: #C8C8C8;
+}
+
+.hint {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+}
