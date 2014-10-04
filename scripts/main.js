@@ -8,7 +8,7 @@
 
     _analytics = new Analytics();
 
-    $scope.inputChange = inputChange;
+    $scope.inputChange = inputChange.bind(null, $scope);
     $scope.newGame = newGame.bind(null, $scope);
     $scope.solve = solve.bind(null, $scope);
 
@@ -36,17 +36,20 @@
     ];
     $scope.selectedDifficulty = $scope.difficulties[2];
 
+    $scope.currentRow = null;
     $scope.currentColumn = null;
-    $scope.setCurrentColumn = setCurrentColumn.bind(null, $scope);
+    $scope.onCellOver = onCellOver.bind(null, $scope);
 
     newGame($scope);
   }
 
-  function inputChange (cell) {
+  function inputChange ($scope, cell) {
     // Validation
-    if (!cell.value.match(/[0-9]/)) {
+    if (cell.value !== '' && !cell.value.match(/[1-9]/)) {
       cell.value = '';
     }
+
+    $scope.game.validateBoard();
   }
 
   function newGame($scope) {
@@ -59,8 +62,9 @@
     _analytics.tracker.sendEvent('Solve');
   }
 
-  function setCurrentColumn($scope, $index) {
-    $scope.currentColumn = $index;
+  function onCellOver($scope, row, column) {
+    $scope.currentRow = row;
+    $scope.currentColumn = column;
   }
 
   app = angular.module('sudokuApp', []);

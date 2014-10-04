@@ -12,8 +12,8 @@
       <button ng-click="solve()">Solve</button>
     </aside>
     <div class="table">
-      <div class="table-row" ng-repeat="row in game.board">
-        <div class="table-cell" ng-repeat="cell in row track by $index" ng-mouseover="setCurrentColumn($index)" ng-mouseleave="setCurrentColumn(null)" ng-class="{highlight: currentColumn == $index}">
+      <div class="table-row" ng-repeat="(rowIndex, row) in game.board">
+        <div class="table-cell" ng-repeat="(cellIndex, cell) in row track by cellIndex" ng-mouseover="onCellOver(rowIndex, cellIndex)" ng-mouseleave="onCellOver(null, null)" ng-class="{highlight: currentRow == rowIndex || currentColumn == cellIndex, error: cell.error }">
           <span class="hint" ng-if="cell.hint">{{cell.value}}</span>
           <input type="text" ng-if="!cell.hint" ng-model="cell.value" ng-change="inputChange(cell)" maxlength="1">
         </div>
