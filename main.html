@@ -2,14 +2,22 @@
 <html>
   <head>
     <title>Sudoku</title>
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="styles/angular.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/angular.min.css">
   </head>
   <body ng-csp ng-cloak ng-controller="MainController">
     <aside>
-      <select ng-model="selectedDifficulty" ng-options="d.name for d in difficulties"></select>
-      <button ng-click="newGame()">New Game</button><br/>
-      <button ng-click="solve()">Solve</button>
+      <div class="btn-dropdown" id="select-difficulty">
+        <div class="btn" tabindex="-1">
+          <span class="difficulty-label">{{selectedDifficulty.name}}</span>
+          <span class="caret"></span>
+        </div>
+        <ul class="dropdown-menu">
+          <li ng-repeat="d in difficulties"><div class="btn" ng-mousedown="selectDifficulty(d)">{{d.name}}</div></li>
+        </ul>
+      </div>
+      <div class="btn" id="new-game" ng-click="newGame()">New Game</div>
+      <div class="btn" id="solve-game" ng-click="solve()">Solve</div>
     </aside>
     <div class="table">
       <div class="table-row" ng-repeat="(rowIndex, row) in game.board">
@@ -25,6 +33,7 @@
     <script src="scripts/analytics.js"></script>
     <script src="scripts/matrix.js"></script>
     <script src="scripts/game.js"></script>
+    <script src="scripts/dropdown.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>

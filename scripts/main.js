@@ -1,4 +1,4 @@
-/* global angular, Analytics, Game*/
+/* global angular, Analytics, Game, Dropdown*/
 (function () {
   'use strict';
 
@@ -9,6 +9,7 @@
     _analytics = new Analytics();
 
     $scope.inputChange = inputChange.bind(null, $scope);
+    $scope.selectDifficulty = selectDifficulty.bind(null, $scope);
     $scope.newGame = newGame.bind(null, $scope);
     $scope.solve = solve.bind(null, $scope);
 
@@ -53,6 +54,10 @@
     $scope.game.validateBoard();
   }
 
+  function selectDifficulty($scope, difficulty) {
+    $scope.selectedDifficulty = difficulty;
+  }
+
   function newGame($scope) {
     $scope.game = new Game($scope.selectedDifficulty.hints);
     _analytics.tracker.sendEvent('New Game', $scope.selectedDifficulty.name);
@@ -73,5 +78,8 @@
 
   angular.element(document).ready(function () {
     angular.bootstrap(document, ['sudokuApp']);
+
+    var dp = new Dropdown();
+    dp.init();
   });
 }());

@@ -27,16 +27,21 @@ aside {
   height: 597px;
   width: 250px;
   float: left;
-  background-color: #436EEE;
-  line-height: 40px;
-  padding: 5px 10px;
+  background-color: #eeeeee;
+  padding: 10px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .table {
   height: 597px;
   width: 597px;
   float: left;
+  box-sizing: content-box;
+}
+
+.table * {
+  box-sizing: content-box;
 }
 
 .table-row {
@@ -96,22 +101,22 @@ aside {
 }
 
 .table-cell input:focus {
-  background-color: yellow;
+  background-color: #ffff00; /* yellow */
 }
 
 .table-row .table-cell.highlight:not(:hover),
 .table-row .table-cell.highlight:not(:hover) input:not(:focus) {
-  background-color: #E8E8E8;
+  background-color: #eeeeee;
 }
 
 .table-cell:hover,
 .table-cell:hover input:not(:focus) {
-  background-color: #C8C8C8;
+  background-color: #bdbdbd;
 }
 
 .table-row .table-cell.error,
 .table-row .table-cell.error input {
-  background-color: red !important;
+  background-color: #c41411 !important;
   color: white !important;
 }
 
@@ -119,4 +124,104 @@ aside {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 900;
   font-size: 16px;
+}
+
+.btn {
+  height: 40px;
+  display: block;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #eeeeee;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  outline: 0;
+}
+
+.btn-dropdown {
+  outline: 0;
+}
+
+#select-difficulty,
+#new-game {
+  float: left;
+}
+
+#select-difficulty .btn {
+  width: 140px;
+  text-align: left;
+  background-color: #424242;
+  color: #fff;
+}
+
+#select-difficulty .btn:hover {
+  background-color: #616161;
+}
+
+#new-game {
+  width: 90px;
+  background-color: #3b50ce;
+  color: #fff;
+}
+
+#new-game:hover {
+  background-color: #455ede;
+}
+
+#solve-game {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background-color: #d84315;
+  color: #fff;
+}
+
+#solve-game:hover {
+  background-color: #e64a19;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  position: absolute;
+  right: 8px;
+  top: 18px;
+}
+
+.btn.open > .caret {
+  border-top: 0;
+  border-bottom: 4px solid;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.btn.open ~ .dropdown-menu {
+  display: block;
+}
+
+.btn .difficulty-label {
+  display: inline;
+}
+
+.btn.open .difficulty-label {
+  display: none;
 }
